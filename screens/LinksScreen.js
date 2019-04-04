@@ -1,13 +1,23 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
+import { ScrollView, StyleSheet } from 'react-native';
+import { ExpoLinksView } from '@expo/samples';
+import * as Actions from '../models/actions'
 
-export default class LinksScreen extends React.Component {
+export class LinksScreen extends React.Component {
+  constructor(props){
+    super(props);
+    this.render = this.render.bind(this);
+  }
+
   static navigationOptions = {
+
     title: 'Map',
   };
 
   render() {
+    console.log(this.props.coordinates);
     return (
       <MapView
         region={{
@@ -25,3 +35,15 @@ export default class LinksScreen extends React.Component {
 const styles = StyleSheet.create({
   map: { flex: 1 },
 });
+
+export const mapStateToProps = (state) => {
+  return {
+   coordinates : state.coordinates
+  }
+};
+
+export const mapDipatchToProps = (dispatch) => {
+  return {
+    FetchAllCoordinates : () => dispatch(Actions.FetchAllCoordinates())
+  }
+};
