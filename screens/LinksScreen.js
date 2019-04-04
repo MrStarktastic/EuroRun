@@ -1,24 +1,27 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+import MapView from 'react-native-maps';
 
 export default class LinksScreen extends React.Component {
   static navigationOptions = {
-    title: 'Links',
+    title: 'Map',
   };
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        
-      </ScrollView>
+      <MapView
+        region={{
+          latitude: 32.109333,
+          longitude: 34.855499,
+          latitudeDelta: 0.005,
+          longitudeDelta: 0.005
+        }}
+        style={ styles.map }
+      />
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    backgroundColor: '#fff',
-  },
+  map: { flex: 1 },
 });
