@@ -8,7 +8,7 @@ import { createStore, applyMiddleware  } from 'redux';
 import { mainReducer } from './models/reducers';
 import { Provider } from 'react-redux'
 
-const appStore = createStore(mainReducer,DefaultAppState,applyMiddleware(thunk));
+const appStore = createStore(mainReducer, DefaultAppState, applyMiddleware(thunk));
 
 export default class App extends React.Component {
   state = {

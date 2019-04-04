@@ -1,31 +1,22 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
 import MapView from 'react-native-maps';
-import { ScrollView, StyleSheet } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
+import { StyleSheet } from 'react-native';
 import * as Actions from '../models/actions'
 
-export class LinksScreen extends React.Component {
+export class MapScreen extends React.Component {
   constructor(props){
     super(props);
     this.render = this.render.bind(this);
   }
 
   static navigationOptions = {
-
     title: 'Map',
   };
 
   render() {
-    console.log(this.props.coordinates);
     return (
       <MapView
-        region={{
-          latitude: 32.109333,
-          longitude: 34.855499,
-          latitudeDelta: 0.005,
-          longitudeDelta: 0.005
-        }}
+        region={ this.props.coordinates }
         style={ styles.map }
       />
     );

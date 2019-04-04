@@ -25,12 +25,12 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: ReduxComponents.LinkScreenWrapper,
+const MapStack = createStackNavigator({
+  MapScreen: ReduxComponents.MapScreenWrapper,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+MapStack.navigationOptions = {
+  tabBarLabel: 'Map',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -55,6 +55,6 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
+  MapStack,
   SettingsStack,
 });

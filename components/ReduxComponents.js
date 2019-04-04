@@ -1,9 +1,8 @@
-
 import { connect } from 'react-redux';
 
 
-import * as LinkScreen from '../screens/LinksScreen'
-export const LinkScreenWrapper = connect(
-    LinkScreen.mapStateToProps,
-    LinkScreen.mapDipatchToProps
-)(LinkScreen.LinksScreen);
+import * as MapScreen from '../screens/MapScreen'
+export const MapScreenWrapper = connect(
+    MapScreen.mapStateToProps,
+    MapScreen.mapDipatchToProps
+)(MapScreen.MapScreen);
