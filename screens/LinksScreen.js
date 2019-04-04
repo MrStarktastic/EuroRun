@@ -9,6 +9,7 @@ export class LinksScreen extends React.Component {
     this.render = this.render.bind(this);
   }
 
+
   static navigationOptions = {
     title: 'Links',
   };
