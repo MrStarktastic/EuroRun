@@ -1,13 +1,21 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
+import * as Actions from '../models/actions'
 
-export default class LinksScreen extends React.Component {
+export class LinksScreen extends React.Component {
+  constructor(props){
+    super(props);
+    this.render = this.render.bind(this);
+  }
+
   static navigationOptions = {
     title: 'Links',
   };
 
   render() {
+    console.log("this.props.coordinates");
+    console.log(this.props.coordinates);
     return (
       <ScrollView style={styles.container}>
         {/* Go ahead and delete ExpoLinksView and replace it with your
@@ -25,3 +33,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
+
+export const mapStateToProps = (state) => {
+  return {
+   coordinates : state.coordinates
+  }
+};
+
+export const mapDipatchToProps = (dispatch) => {
+  return {
+    FetchAllCoordinates : () => dispatch(Actions.FetchAllCoordinates())
+  }
+};
