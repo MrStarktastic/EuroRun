@@ -1,14 +1,10 @@
 import React from 'react';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet } from 'react-native';
-import * as Actions from '../models/actions'
+import * as Actions from '../models/actions';
+import { NavigationEvents } from 'react-navigation';
 
 export class MapScreen extends React.Component {
-  constructor(props){
-    super(props);
-    this.render = this.render.bind(this);
-  }
-
   static navigationOptions = {
     title: 'Map',
   };
@@ -16,9 +12,14 @@ export class MapScreen extends React.Component {
   render() {
     return (
       <MapView
-        region={ this.props.coordinates }
-        style={ styles.map }
-      />
+        region={ this.props.baseCoordinates }
+        style={ styles.map }>
+        <Marker
+          coordinate={ this.props.frenchEmbassyCoordinates }
+          title={ 'French Embassy' }
+          onCalloutPress={ () => console.log('Callout pressed!') }
+        />
+      </MapView>
     );
   }
 }
@@ -29,12 +30,13 @@ const styles = StyleSheet.create({
 
 export const mapStateToProps = (state) => {
   return {
-   coordinates : state.coordinates
+   baseCoordinates: state.baseCoordinates,
+   frenchEmbassyCoordinates: state.frenchEmbassyCoordinates
   }
 };
 
-export const mapDipatchToProps = (dispatch) => {
+export const mapDispatchToProps = (dispatch) => {
   return {
-    FetchAllCoordinates : () => dispatch(Actions.FetchAllCoordinates())
+    FetchAllCoordinates: () => dispatch(Actions.FetchAllCoordinates())
   }
 };
